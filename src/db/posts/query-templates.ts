@@ -1,16 +1,16 @@
-export const insertPostTemplates = `
+export const insertPostTemplate = `
 INSERT INTO posts (id, userId, title, body)
 VALUES (?, ?, ?, ?)
 `;
 
-export const selectPostsTemplates = `
+export const selectPostsTemplate = `
 SELECT *
 FROM posts
 WHERE userId = ?
 LIMIT ?, ?
 `;
 
-export const deletePostTemplates = `
+export const deletePostTemplate = `
 DELETE FROM posts
 WHERE id = ?
 `;

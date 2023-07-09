@@ -1,13 +1,13 @@
 import { Post } from "../../common/types";
 import connection from "../connection";
 
-import { insertPostTemplates, selectPostsTemplates, deletePostTemplates } from "./query-templates";
+import { insertPostTemplate, selectPostsTemplate, deletePostTemplate } from "./query-templates";
 
 export const setPosts = async (posts: Post[]) => {
   const allInsets = posts.map(
     ({ id, userId, title, body }) =>
       new Promise((resolve, reject) => {
-        connection.query(insertPostTemplates, [id, userId, title, body], (error, results) => {
+        connection.query(insertPostTemplate, [id, userId, title, body], (error, results) => {
           if (error) {
             reject(error);
           }
@@ -21,7 +21,7 @@ export const setPosts = async (posts: Post[]) => {
 
 export const getPosts = (userId, offset: number, limit: number): Promise<Post[]> =>
   new Promise((resolve, reject) => {
-    connection.query(selectPostsTemplates, [userId, offset, limit], (error, results) => {
+    connection.query(selectPostsTemplate, [userId, offset, limit], (error, results) => {
       if (error) {
         reject(error);
       }
@@ -31,7 +31,7 @@ export const getPosts = (userId, offset: number, limit: number): Promise<Post[]>
 
 export const deletePost = (postId: number) =>
   new Promise((resolve, reject) => {
-    connection.query(deletePostTemplates, [postId], (error, results) => {
+    connection.query(deletePostTemplate, [postId], (error, results) => {
       if (error) {
         reject(error);
       }

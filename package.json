@@ -1,7 +1,6 @@
 {
-  "name": "<name>",
+  "name": "users-posts-server",
   "version": "1.0.0",
-  "description": "<description>",
   "main": "src/index.ts",
   "scripts": {
     "pre-commit": "lint-staged && tsc --noEmit",
@@ -17,11 +16,6 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "npm test -- --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "<repository-url>"
-  },
-  "author": "<author>",
   "license": "ISC",
   "dependencies": {
     "@types/config": "3.3.0",

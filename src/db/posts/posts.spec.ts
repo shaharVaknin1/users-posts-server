@@ -1,6 +1,6 @@
 import connection from "../connection";
 
-import { deletePostTemplates, insertPostTemplates, selectPostsTemplates } from "./query-templates";
+import { deletePostTemplate, insertPostTemplate, selectPostsTemplate } from "./query-templates";
 import { deletePost, getPosts, setPosts } from "./posts";
 
 jest.mock("../connection", () => ({
@@ -24,9 +24,9 @@ describe("setPosts", () => {
     );
 
     expect(queryMock).toHaveBeenCalledTimes(2);
-    expect(queryMock.mock.calls[0][0]).toEqual(insertPostTemplates);
+    expect(queryMock.mock.calls[0][0]).toEqual(insertPostTemplate);
     expect(queryMock.mock.calls[0][1]).toEqual([1, 1, "Post 1", "Body 1"]);
-    expect(queryMock.mock.calls[1][0]).toEqual(insertPostTemplates);
+    expect(queryMock.mock.calls[1][0]).toEqual(insertPostTemplate);
     expect(queryMock.mock.calls[1][1]).toEqual([2, 1, "Post 2", "Body 2"]);
   });
 
@@ -65,7 +65,7 @@ describe("getPosts", () => {
 
     expect(queryMock).toHaveBeenCalledTimes(1);
 
-    expect(queryMock.mock.calls[0][0]).toEqual(selectPostsTemplates);
+    expect(queryMock.mock.calls[0][0]).toEqual(selectPostsTemplate);
     expect(queryMock.mock.calls[0][1]).toEqual([userId, offset, limit]);
   });
 
@@ -96,7 +96,7 @@ describe("deletePost", () => {
     await expect(deletePost(postId)).resolves.toEqual([postId]);
 
     expect(queryMock).toHaveBeenCalledTimes(1);
-    expect(queryMock.mock.calls[0][0]).toEqual(deletePostTemplates);
+    expect(queryMock.mock.calls[0][0]).toEqual(deletePostTemplate);
     expect(queryMock.mock.calls[0][1]).toEqual([postId]);
   });
 
