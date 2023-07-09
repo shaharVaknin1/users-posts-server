@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 
 import { deletePost } from "../db/posts/posts";
-import { getPostsAndCacheIfNeeded } from "../handlers/postHandlers";
+import { getPostsAndCacheIfNeeded } from "../handlers/post-handlers";
 
 const router = Router();
 
